@@ -1,0 +1,102 @@
+
+
+
+% Define MATLAB code style for listings package
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+    language=Matlab,
+    keywordstyle=\color{blue},
+    commentstyle=\color{mygreen},
+    stringstyle=\color{mymauve},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    numbers=left,
+    numberstyle=\tiny\color{mygray},
+    stepnumber=1,
+    numbersep=10pt,
+    tabsize=4,
+    showspaces=false,
+    showstringspaces=false
+}
+
+
+
+\title{MATLAB Script: HJB.matt}
+\author{Matt Murillo}
+\date{}
+
+\maketitle
+
+\section*{MATLAB Code}
+\begin{lstlisting}
+function p = define_parameters()
+
+% This function defines the parameters needed for the HJB_ramsey_implicit.m script
+
+%% Economic Parameters
+
+    % Discount rate
+    p.rho = 0.05;
+
+    % Relative risk aversion coefficient
+    p.sigma = 2;
+    
+    % Interest rate;
+    p.r = 0.03
+
+    % Transition rates
+    p.lambda = [0.03, 0.02]
+
+    % Income
+    p.z = [0.2, 0.1]
+
+    % Asset min
+    p.amin = -0.02
+
+    % Asset max (arbitrary)
+    p.amax = 10
+
+%% Economic Functions
+    
+    % Utility function
+    p.u = @(c) (c.^(1-p.sigma))./(1-p.sigma);
+
+    % Marginal utility function
+    p.mu = @(c) c.^(-p.sigma);
+
+    % Inverse of marginal utility
+    % Note: FOC: mu(c) = dv(a) -> c = inv_mu(dv)
+    p.inv_mu = @(dv) dv.^(-1/p.sigma);
+
+    % Production function
+    p.f = @(k) p.A * k.^p.alpha;
+
+     
+      
+
+%% Grid Paramters
+
+    % The number of grid points
+    p.I = 500;
+
+    % Higher klim implies broader coverage
+    p.klim = 1.5;
+
+%% Tuning Parameters
+    
+    % The maximum number of iteration
+    p.maxit = 1000;
+
+    % Convergence criterion, and
+    p.tol = 1e-8;
+
+    % Step size (Delta)
+    p.Delta = 1000;
+
+end
+\end{lstlisting}
+
+
