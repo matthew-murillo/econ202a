@@ -25,7 +25,7 @@ clc;
 
 %% 1. DEFINE PARAMETERS
 
-p = define_parameters();
+p = define_parameters3();
 
 %% 2. INITIALIZE GRID POINTS
 % Grid of assets
@@ -156,31 +156,31 @@ s = reshape(repmat(p.z, p.I, 1), [],1) + repmat(p.r*a, 2, 1) - c;
 c = reshape(c, [], 2);
 s = reshape(s, [], 2);
 V = reshape(V, [], 2);
-
-set(gca,'FontSize',14)
-plot(a,c,'LineWidth',2)
-grid
-xlabel('a')
-ylabel('c_i(a)')
-xlim([p.amin p.amax])
-legend('Employed','Unemployed', 'Location', 'northwest')
-saveas(gcf, 'fig1.png')
-
-set(gca,'FontSize',14)
-plot(a,s,'LineWidth',2)
-grid
-xlabel('a')
-ylabel('s')
-xlim([p.amin p.amax])
-legend('Employed','Unemployed', 'Location', 'northwest')
-saveas(gcf, 'fig2.png')
-
-set(gca,'FontSize',14)
-plot(a,V,'LineWidth',2)
-grid
-xlabel('a')
-ylabel('V')
-xlim([p.amin p.amax])
-legend('Employed','Unemployed', 'Location', 'northwest')
-saveas(gcf, 'fig3.png')
-
+% 
+% set(gca,'FontSize',14)
+% plot(a,c,'LineWidth',2)
+% grid
+% xlabel('a')
+% ylabel('c_i(a)')
+% xlim([p.amin p.amax])
+% legend('Employed','Unemployed', 'Location', 'northwest')
+% saveas(gcf, 'fig1.png')
+% 
+% set(gca,'FontSize',14)
+% plot(a,s,'LineWidth',2)
+% grid
+% xlabel('a')
+% ylabel('s')
+% xlim([p.amin p.amax])
+% legend('Employed','Unemployed', 'Location', 'northwest')
+% saveas(gcf, 'fig2.png')
+% 
+% set(gca,'FontSize',14)
+% plot(a,V,'LineWidth',2)
+% grid
+% xlabel('a')
+% ylabel('V')
+% xlim([p.amin p.amax])
+% legend('Employed','Unemployed', 'Location', 'northwest')
+% saveas(gcf, 'fig3.png')
+% 
